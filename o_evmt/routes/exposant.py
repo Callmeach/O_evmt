@@ -19,13 +19,14 @@ def create():
     telephone = body.get('telephone', None)
 
     domaine = Domaine.query.filter(Domaine.libelle == body.get('domaine', None)).first()
+    domaine_id = domaine.id
     specialisation = body.get('specialisation', None)
     abonnement = body.get('abonnement', None)
     abonPub = body.get('abonPub', None)
 
     exposant = Exposant(nom=nom, prenom=prenom, dateNaiss=dateNaiss, pays=pays, ville=ville, mail=mail,
                         telephone=telephone, specialisation=specialisation,
-                        abonnement=abonnement, abonPub=abonPub, domaine_id=domaine.id)
+                        abonnement=abonnement, abonPub=abonPub, domaine_id=domaine_id)
 
     exposant.insert()
 
