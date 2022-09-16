@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, abort
 
+from ..models.commentaire import Commentaire
 from ..models.enterprise import Entreprise
 from ..models.publication import Publication
 from ..models.exposant import Exposant
@@ -17,8 +18,9 @@ def getAll():
         "publications": posts
     })
 
+
 @publication_bp.route('/<creator>/<int:id>')
-def make_post(creator:str, id: int):
+def make_post(creator: str, id: int):
     # checking the creator
 
     # TODO : Analyse if we should combine Publication and Evenemen.t
@@ -41,6 +43,24 @@ def make_post(creator:str, id: int):
     else:
         abort(404)
 
+
+@publication_bp.get("/<int:id>/comments")
+# Récupérer tous les commentaires d'une publication donnée
+def get_all_comments(id):
+    publication = Publication.query.get(id)
+    if publication is None:
+        abort(404)
+    else:
+        commentaires = Commentaire.query.filter(Commentaire.publication_id == id)
+        commentaire_formated = [commentaire.commentaire_format() for commentaire in commentaires]
+
+        return jsonify(
+            {
+                'publication_id': id,
+                'total': len(commentaire_formated),
+                'commentaires': commentaire_formated
+            }
+        )
 
 # @publication_bp.route('/<str:command>')
 # # this route is for make our backend RQLable :) (:

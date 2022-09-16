@@ -18,13 +18,8 @@ class Exposant(Personne):
         "polymorphic_identity": "exposant"
     }
 
-<<<<<<< HEAD
-    def __init__(self, nom, prenom, dateNaiss, pays, ville, mail, telephone, domaine_id, specialisation, abonnement, abonPub):
-=======
     def __init__(self, nom, prenom, dateNaiss, pays, ville, mail, telephone, specialisation, abonnement, abonPub, idDomaine):
->>>>>>> d5c6fd2f6b77b083babb8a86af60f3ab7acdf896
         Personne.__init__(self, nom, prenom, dateNaiss, pays, ville, mail, telephone)
-        self.domaine_id = domaine_id
         self.specialisation = specialisation
         self.abonnement = abonnement
         self.abonPub = abonPub
@@ -62,5 +57,4 @@ class Exposant(Personne):
                 'abonnement': self.abonnement,
                 'abonPub': self.abonPub
             }
-
 

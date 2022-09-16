@@ -60,8 +60,9 @@ def get_all():
         'enterprises': all
     })
 
+
 @entreprise_bp.route('/<int:id>')
-def get(id:int):
+def get(id: int):
     ent = Entreprise.exists(id)
     if ent is not False:
         return jsonify({
@@ -70,6 +71,7 @@ def get(id:int):
         })
     else:
         abort(404)
+
 
 @entreprise_bp.route('/<int:id>', methods=['DELETE'])
 def delete(id: int):
@@ -120,6 +122,5 @@ def update(id: int):
         ent.update()
     else:
         abort(404)
-
 
 # TODO : implement search methods

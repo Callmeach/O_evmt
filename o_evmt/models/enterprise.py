@@ -1,6 +1,7 @@
 from o_evmt import create_app
 from o_evmt.extensions import db
 
+
 class Entreprise(db.Model):
     __tablename__ = 'entreprises'
 
@@ -15,7 +16,6 @@ class Entreprise(db.Model):
     domaine_id = db.Column(db.Integer, db.ForeignKey('domaine.id'))
     abonnement = db.Column(db.String(50), nullable=False)
     abonPub = db.Column(db.String(50), nullable=False)
-
 
     def __init__(self, nom, description, pays, ville, mail, contact, domaine_id, abonnement, abonPub):
         self.nomEntreprise = nom
@@ -50,16 +50,16 @@ class Entreprise(db.Model):
 
     def format(self):
         return {
-                'nom': self.nom,
-                'description': self.description,
-                'pays': self.pays,
-                'ville': self.ville,
-                'mail': self.mail,
-                'contact': self.contact,
-                'domaine_id': self.domaine_id,
-                'abonnement': self.abonnement,
-                'abonPub': self.abonPub
-            }
+            'nom': self.nom,
+            'description': self.description,
+            'pays': self.pays,
+            'ville': self.ville,
+            'mail': self.mail,
+            'contact': self.contact,
+            'domaine_id': self.domaine_id,
+            'abonnement': self.abonnement,
+            'abonPub': self.abonPub
+        }
 
 # db.create_all(app=create_app())
 # TODO : Create/generate the table 'entreprises'

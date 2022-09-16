@@ -22,7 +22,6 @@ def create():
     telephone = body.get('telephone', None)
 
     domaine = Domaine.query.filter(Domaine.libelle == body.get('domaine', None)).first()
-    domaine_id = domaine.id
     specialisation = body.get('specialisation', None)
     abonnement = body.get('abonnement', None)
     abonPub = body.get('abonPub', None)
@@ -30,13 +29,8 @@ def create():
     print(domaine.id)
     exposant = Exposant(nom=nom, prenom=prenom, dateNaiss=dateNaiss, pays=pays, ville=ville, mail=mail,
                         telephone=telephone, specialisation=specialisation,
-<<<<<<< HEAD
-                        abonnement=abonnement, abonPub=abonPub, domaine_id=domaine_id)
-
-=======
                         abonnement=abonnement, abonPub=abonPub, idDomaine=domaine.id)  # , domaine_id=domaine.id
     print(exposant)
->>>>>>> d5c6fd2f6b77b083babb8a86af60f3ab7acdf896
     exposant.insert()
 
     return jsonify(
@@ -190,4 +184,3 @@ def get_posts_of_exposant(id_exposant: int):
             'total': len(posts),
             'posts': posts
         })
-
