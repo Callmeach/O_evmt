@@ -1,6 +1,4 @@
-from o_evmt import create_app
 from o_evmt.extensions import db
-
 
 class Entreprise(db.Model):
     __tablename__ = 'entreprises'

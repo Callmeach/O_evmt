@@ -1,6 +1,5 @@
-.env
-*.pyc
 __pycache__
 app.db
+*.pyc
 .cache/
 o_evmt/
