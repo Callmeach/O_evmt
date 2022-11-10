@@ -30,6 +30,6 @@ class Publication(db.Model):
         return {
             "exposant": Exposant.query.get(self.exposant_id).format(),
             "coordonnees": self.coordonnees,
-            "lienPhoto" : self.lienPhoto,
-            "lienVideo" : self.lienVideo
+            "lienPhoto": self.lienPhoto,
+            "lienVideo": self.lienVideo
         }
