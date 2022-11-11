@@ -12,9 +12,10 @@ def create():
     texteCom = body.get('texteCom', None)
     lienPhoto = body.get('lienPhoto', None)
     client_id = body.get('client_id', None)
+    exposant_id = body.get('exposant_id', None)
     publication_id = body.get('publication_id', None)
 
-    commentaire = Commentaire(client=client_id, publication=publication_id, commentaire=texteCom, photo=lienPhoto)
+    commentaire = Commentaire(client=client_id, exposant=exposant_id, publication=publication_id, commentaire=texteCom, photo=lienPhoto)
 
     commentaire.insert()
 

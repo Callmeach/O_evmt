@@ -1,15 +1,17 @@
-from .personne import db
+from o_evmt.extensions import db
 
 
 class Commentaire(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
+    exposant_id = db.Column(db.Integer, db.ForeignKey('exposant.id'))
     publication_id = db.Column(db.Integer, db.ForeignKey('publication.id'))
     texteCom = db.Column(db.String(500), nullable=False)
     lienPhoto = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, client, publication, commentaire, photo):
+    def __init__(self, client, exposant, publication, commentaire, photo):
         self.client_id = client,
+        self.exposant_id = exposant
         self.publication_id = publication,
         self.texteCom = commentaire,
         self.lienPhoto = photo
@@ -18,6 +20,7 @@ class Commentaire(db.Model):
         return {
             'id': self.id,
             'client_id': self.client_id,
+            'exposant_id': self.exposant_id,
             'publication_id': self.publication_id,
             'texteCom': self.texteCom,
             'lienPhoto': self.lienPhoto
