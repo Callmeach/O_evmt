@@ -2,4 +2,3 @@ __pycache__
 app.db
 *.pyc
 .cache/
-o_evmt/
